@@ -10,12 +10,10 @@ def load_tasks():
     else:
         return []
 
-# Function to save tasks to a JSON file
 def save_tasks(tasks):
     with open('tasks.json', 'w') as file:
         json.dump(tasks, file, indent=4)
 
-# Function to add a task
 def add_task(tasks, description, priority, due_date):
     task = {
         'description': description,
@@ -27,7 +25,6 @@ def add_task(tasks, description, priority, due_date):
     save_tasks(tasks)
     print(f"Task added: {description}")
 
-# Function to remove a task
 def remove_task(tasks, index):
     if index < 0 or index >= len(tasks):
         print("Invalid task number.")
@@ -36,7 +33,6 @@ def remove_task(tasks, index):
     save_tasks(tasks)
     print(f"Task removed: {removed_task['description']}")
 
-# Function to mark a task as completed
 def complete_task(tasks, index):
     if index < 0 or index >= len(tasks):
         print("Invalid task number.")
@@ -45,7 +41,6 @@ def complete_task(tasks, index):
     save_tasks(tasks)
     print(f"Task marked as completed: {tasks[index]['description']}")
 
-# Function to display tasks
 def display_tasks(tasks):
     if not tasks:
         print("No tasks found.")
@@ -55,7 +50,6 @@ def display_tasks(tasks):
             status = "Done" if task['completed'] else "Not Done"
             print(f"{i + 1}. {task['description']} (Priority: {task['priority']}, Due Date: {task['due_date']}, Status: {status})")
 
-# Main function
 def main():
     tasks = load_tasks()
 
